@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.37/moment-timezone-with-data-1970-2030.min.js"></script>
+    <title>🕦World-Clock</title>
+    <style>
+        body{
+    font-family: sans-serif;
+    background-color: antiquewhite;
+}
+
+h1{
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 36px;
+}
+
+h2{
+    margin: 0 0 5px;
+    font-size: 28px;
+}
+
+select{
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.container{
+    max-width: 500px;
+    margin: 60px auto;
+    background: linear-gradient(90.9deg, rgb(255, 187, 187) -8.8%, rgb(255, 220, 177) 12.4%, rgb(255, 249, 177) 35.6%, rgb(220, 255, 177) 59.6%, rgb(177, 218, 255) 84%, rgb(222, 177, 255) 107.9%);
+    padding: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+}
+
+.city{
+    display: flex;
+    margin: 10px 0;
+    justify-content: space-between;
+    padding: 30px 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+.city:last-child{
+    border: none;
+}
+
+.date {
+    opacity: 0.6;
+}
+
+.time small {
+    font-size: 24px;
+    vertical-align: middle;
+    line-height: 48px;
+}
+
+.time{
+    font-size: 48px;
+    font-weight: bold;
+}
+
+footer{
+    text-align: center;
+    font-size: 18px;
+    color: rgba(0, 0, 0.8);
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>
+        World-Clock
+    </h1>
+
+    <select id="city">
+        <option value="">Select a city...</option>
+        <option value="current">My current location</option>
+        <option value="Europe/London">London</option>
+        <option value="America/New_York">New York</option>
+        <option value="Pacific/Auckland">Auckland</option>
+    </select>
+    <div id="cities">
+        <div class="city" id="los-angeles">
+            <div>
+                <h2>Los Angels 🇺🇸</h2>
+                <div class="date"></div>
+            </div>
+            <div class="time"></div>
+        </div>
+        <div class="city" id="turin">
+            <div>
+                <h2>Turin 🇮🇹</h2>
+                <div class="date"></div>
+            </div>
+            <div class="time"></div>
+        </div>
+        <div class="city" id="paris">
+            <div>
+                <h2>Paris 🇫🇷</h2>
+                <div class="date"></div>
+            </div>
+            <div class="time"></div>
+        </div>
+        <div class="city" id="auckland">
+            <div>
+                <h2>Auckland 🇦🇺</h2>
+                <div class="date"></div>
+            </div>
+            <div class="time"></div>
+        </div>
+        <div class="city" id="berlin">
+            <div>
+                <h2>Berlin 🇩🇪</h2>
+                <div class="date"></div>
+            </div>
+            <div class="time"></div>
+        </div>
+        <div class="city" id="tokyo">
+            <div>
+                <h2>Tokyo 🇯🇵</h2>
+                <div class="date"></div>
+            </div>
+            <div class="time"></div>
+        </div>
+        <div class="city" id="dubai">
+            <div>
+                <h2>Dubai 🇦🇪</h2>
+                <div class="date"></div>
+            </div>
+            <div class="time"></div>
+        </div>
+    </div>  
+</div>
+<footer>
+    This project is coded with 💚 by <strong>KAUR JASJIT</strong> and is <a href="https://github.com/Kjasjit/WORLD-CLOCK" target="_blank">open sourced at GitHub</a>
+</footer>
+<script>
+function updateTime() {
+  let losAngelesElement = document.querySelector("#los-angeles");
+  if (losAngelesElement) {
+    let losAngelesDateElement = losAngelesElement.querySelector(".date");
+    let lostAngelesTimeElement = losAngelesElement.querySelector(".time");
+    let losAngelesTime = moment().tz("America/Los_Angeles");
+
+    losAngelesDateElement.innerHTML = losAngelesTime.format("MMMM	Do YYYY");
+    lostAngelesTimeElement.innerHTML = losAngelesTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+
+  let turinElement = document.querySelector("#turin");
+  if (turinElement) {
+    let turinDateElement = turinElement.querySelector(".date");
+    let turinTimeElement = turinElement.querySelector(".time");
+    let turinTime = moment().tz("Europe/Turin");
+
+    turinDateElement.innerHTML = turinTime.format("MMMM	Do YYYY");
+    turinTimeElement.innerHTML = turinTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+
+  let parisElement = document.querySelector("#paris");
+  if (parisElement) {
+    let parisDateElement = parisElement.querySelector(".date");
+    let parisTimeElement = parisElement.querySelector(".time");
+    let parisTime = moment().tz("Europe/Paris");
+
+    parisDateElement.innerHTML = parisTime.format("MMMM	Do YYYY");
+    parisTimeElement.innerHTML = parisTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+
+  let aucklandElement = document.querySelector("#auckland");
+  if (aucklandElement) {
+    let aucklandDateElement = aucklandElement.querySelector(".date");
+    let aucklandTimeElement = aucklandElement.querySelector(".time");
+    let aucklandTime = moment().tz("Pacific/Auckland");
+
+    aucklandDateElement.innerHTML = aucklandTime.format("MMMM	Do YYYY");
+    aucklandTimeElement.innerHTML = aucklandTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+
+  let berlinElement = document.querySelector("#berlin");
+  if (berlinElement) {
+    let berlinDateElement = berlinElement.querySelector(".date");
+    let berlinTimeElement = berlinElement.querySelector(".time");
+    let berlinTime = moment().tz("Europe/Berlin");
+
+    berlinDateElement.innerHTML = berlinTime.format("MMMM	Do YYYY");
+    berlinTimeElement.innerHTML = berlinTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+ 
+  let tokyoElement = document.querySelector("#tokyo");
+  if (tokyoElement) {
+    let tokyoDateElement = tokyoElement.querySelector(".date");
+    let tokyoTimeElement = tokyoElement.querySelector(".time");
+    let tokyoTime = moment().tz("Asia/Tokyo");
+
+    tokyoDateElement.innerHTML = tokyoTime.format("MMMM	Do YYYY");
+    tokyoTimeElement.innerHTML = tokyoTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+
+  let dubaiElement = document.querySelector("#dubai");
+  if (dubaiElement) {
+    let dubaiDateElement = dubaiElement.querySelector(".date");
+    let dubaiTimeElement = dubaiElement.querySelector(".time");
+    let dubaiTime = moment().tz("Asia/Dubai");
+
+    dubaiDateElement.innerHTML = dubaiTime.format("MMMM	Do YYYY");
+    dubaiTimeElement.innerHTML = dubaiTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+
+
+}
+
+function updateCity(event) {
+  let cityTimeZone = event.target.value;
+  if (cityTimeZone === "current") {
+    cityTimeZone = moment.tz.guess();
+  }
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  let cityTime = moment().tz(cityTimeZone);
+  let citiesElement = document.querySelector("#cities");
+  citiesElement.innerHTML = `
+  <div class="city">
+    <div>
+      <h2>${cityName}</h2>
+      <div class="date">${cityTime.format("MMMM	Do YYYY")}</div>
+    </div>
+    <div class="time">${cityTime.format("h:mm:ss")} <small>${cityTime.format(
+    "A"
+  )}</small></div>
+  </div>
+  <a href="/">All cities</a>
+  `;
+}
+
+updateTime();
+setInterval(updateTime, 1000);
+
+let citiesSelectElement = document.querySelector("#city");
+citiesSelectElement.addEventListener("change", updateCity);
+</script>
+
+</body>
+</html>
